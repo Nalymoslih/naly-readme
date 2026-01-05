@@ -1,8 +1,7 @@
-<a href="https://github.com/NalyMoslih/naly-readme">
+<a href="https://github.com/Nalymoslih/naly-readme">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/NalyMoslih/naly-readme
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Nalymoslih/naly-readme
 /main/dark_mode.svg">
-    <img alt="NalyMoslih's GitHub Profile README" src="https://raw.githubusercontent.com/NalyMoslih/naly-readme/main/light_mode.svg">
+    <img alt="Nalymoslih's GitHub Profile README" src="https://raw.githubusercontent.com/Nalymoslih/naly-readme/main/light_mode.svg">
   </picture>
 </a>
-# naly-readme
