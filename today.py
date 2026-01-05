@@ -281,6 +281,22 @@ def committers_rank_getter(username, country='iraq'):
     return 'Unranked'
 
 
+def github_streak_getter(username):
+    """Fetch GitHub streak data from GitHub Streak Stats API"""
+    try:
+        url = f"https://github-readme-streak-stats.herokuapp.com/?user={username}&type=json"
+        response = requests.get(url, timeout=15)
+        if response.status_code == 200:
+            data = response.json()
+            return {
+                'current_streak': data.get('currentStreak', {}).get('length', 0),
+                'longest_streak': data.get('longestStreak', {}).get('length', 0)
+            }
+    except:
+        pass
+    return {'current_streak': 0, 'longest_streak': 0}
+
+
 def extract_rank_from_committers_svg(svg_text):
     if re.search(r"\bunranked\b", svg_text, flags=re.IGNORECASE):
         return 'Unranked'
@@ -307,7 +323,7 @@ def extract_rank_from_committers_svg(svg_text):
     raise ValueError('Could not extract rank from committers.top SVG')
 
 
-def svg_overwrite(filename, age_data, commit_data, rank_data, repo_data, contrib_data, follower_data, loc_data, top_langs):
+def svg_overwrite(filename, age_data, commit_data, rank_data, repo_data, contrib_data, follower_data, loc_data, top_langs, streak_data):
     tree = etree.parse(filename)
     root = tree.getroot()
     justify_format(root, 'age_data', age_data, 90)
@@ -319,6 +335,10 @@ def svg_overwrite(filename, age_data, commit_data, rank_data, repo_data, contrib
     justify_format(root, 'loc_data', loc_data[2], 49)
     justify_format(root, 'loc_add', loc_data[0], 0)
     justify_format(root, 'loc_del', loc_data[1], 0)
+    
+    # Update streak data
+    justify_format(root, 'current_streak', streak_data['current_streak'], 0)
+    justify_format(root, 'longest_streak', streak_data['longest_streak'], 0)
     
     # Update top languages
     for i, lang in enumerate(top_langs[:5]):
@@ -473,13 +493,14 @@ if __name__ == '__main__':
                                               ['OWNER', 'COLLABORATOR', 'ORGANIZATION_MEMBER'])
     follower_data, follower_time = perf_counter(follower_getter, USER_NAME)
     top_langs, lang_time = perf_counter(top_languages_getter, USER_NAME)
+    streak_data, streak_time = perf_counter(github_streak_getter, USER_NAME)
 
     for index in range(len(total_loc) - 1): total_loc[index] = '{:,}'.format(total_loc[index])
 
     svg_overwrite('dark_mode.svg', age_data, commit_data, rank_data, repo_data, contrib_data, follower_data,
-                  total_loc[:-1], top_langs)
+                  total_loc[:-1], top_langs, streak_data)
     svg_overwrite('light_mode.svg', age_data, commit_data, rank_data, repo_data, contrib_data, follower_data,
-                  total_loc[:-1], top_langs)
+                  total_loc[:-1], top_langs, streak_data)
 
     print('\033[F\033[F\033[F\033[F\033[F\033[F\033[F\033[F',
           '{:<21}'.format('Total function time:'),
