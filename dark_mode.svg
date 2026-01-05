@@ -1,42 +1,281 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns="http://www.w3.org/2000/svg" font-family="ConsolasFallback,Consolas,monospace" width="985px" height="530px" font-size="16px">
-<style>
-@font-face {
-src: local('Consolas'), local('Consolas Bold');
-font-family: 'ConsolasFallback';
-font-display: swap;
--webkit-size-adjust: 109%;
-size-adjust: 109%;
-}
-.key {fill: #ffa657;}
-.value {fill: #a5d6ff;}
-.addColor {fill: #3fb950;}
-.delColor {fill: #f85149;}
-.cc {fill: #616e7f;}
-text, tspan {white-space: pre;}
-</style>
-<rect width="985px" height="500px" fill="#161b22" rx="15"/>
-<text x="15" y="30" fill="#c9d1d9">
-<tspan x="15" y="30">naly@moslih</tspan> -——————————————————————————————————————————————————————————————————————————————————-—-
-<tspan x="15" y="50" class="cc">. </tspan><tspan class="key">OS</tspan>:<tspan class="cc"> ................................................................. </tspan><tspan class="value">macOS</tspan>
-<tspan x="15" y="70" class="cc">. </tspan><tspan class="key">Uptime</tspan>:<tspan class="cc" id="age_data_dots"> ............................................................. </tspan><tspan class="value" id="age_data">24 years, 8 months, 15 days</tspan>
-<tspan x="15" y="90" class="cc">. </tspan><tspan class="key">Host</tspan>:<tspan class="cc"> .................................................................................... </tspan><tspan class="value">Lezzoo</tspan>
-<tspan x="15" y="110" class="cc">. </tspan><tspan class="key">Kernel</tspan>:<tspan class="cc"> ...................................................................... </tspan><tspan class="value">Full Stack Developer</tspan>
-<tspan x="15" y="130" class="cc">. </tspan><tspan class="key">IDE</tspan>:<tspan class="cc"> ................................................................................... </tspan><tspan class="value">Windsurf</tspan>
-<tspan x="15" y="150" class="cc">. </tspan>
-<tspan x="15" y="170" class="cc">. </tspan><tspan class="key">Languages</tspan>.<tspan class="key">Programming</tspan>:<tspan class="cc"> ..................................... </tspan><tspan class="value">JavaScript, TypeScript, Python</tspan>
-<tspan x="15" y="190" class="cc">. </tspan><tspan class="key">Languages</tspan>.<tspan class="key">Stack</tspan>:<tspan class="cc"> ................................... </tspan><tspan class="value">React, Node.js, Express, MongoDB, PostgreSQL</tspan>
-<tspan x="15" y="210" class="cc">. </tspan><tspan class="key">Languages</tspan>.<tspan class="key">Styling</tspan>:<tspan class="cc"> .......................................................... </tspan><tspan class="value">CSS, Tailwind, SCSS</tspan>
-<tspan x="15" y="230" class="cc">. </tspan>
-<tspan x="15" y="250" class="cc">. </tspan><tspan class="key">Languages</tspan>.<tspan class="key">Real</tspan>:<tspan class="cc"> ........................................................ </tspan><tspan class="value">Kurdish, Arabic, English</tspan>
-<tspan x="15" y="270" class="cc">. </tspan><tspan class="key">Hobbies</tspan>.<tspan class="key">Software</tspan>:<tspan class="cc"> ...................................................... </tspan><tspan class="value">VS Code, Figma</tspan>
-<tspan x="15" y="290" class="cc">. </tspan><tspan class="key">Hobbies</tspan>.<tspan class="key">Main</tspan>:<tspan class="cc"> ............................................................. </tspan><tspan class="value">Open Source, Mobile Developer</tspan>
-<tspan x="15" y="330">- Contact</tspan> -—————————————————————————————————————————————————————————————————————————————————————-—-
-<tspan x="15" y="350" class="cc">. </tspan><tspan class="key">Email</tspan>:<tspan class="cc"> ................................................................... </tspan><tspan class="value">naly.software@gmail.com</tspan>
-<tspan x="15" y="370" class="cc">. </tspan><tspan class="key">LinkedIn</tspan>:<tspan class="cc"> .......................................................................... </tspan><tspan class="value">Naly Moslih</tspan>
-<tspan x="15" y="410">- GitHub Stats</tspan> -————————————————————————————————————————————————————————————————————————————————-—-
-<tspan x="15" y="430" class="cc">. </tspan><tspan class="key">Repos</tspan>:<tspan class="cc" id="repo_data_dots"> .................... </tspan><tspan class="value" id="repo_data">53</tspan> {<tspan class="key">Contributed</tspan>: <tspan class="value" id="contrib_data">62</tspan>}
-<tspan x="15" y="450" class="cc">. </tspan><tspan class="key">Commmits</tspan>:<tspan class="cc" id="commit_data_dots"> ................................ </tspan><tspan class="value" id="commit_data">4,342</tspan> | <tspan class="key">Followers</tspan>:<tspan class="cc" id="follower_data_dots"> ................................ </tspan><tspan class="value" id="follower_data">53</tspan>
-<tspan x="15" y="470" class="cc">. </tspan><tspan class="key">Lines of Code on GitHub</tspan>:<tspan class="cc" id="loc_data_dots"> ...................................... </tspan><tspan class="value" id="loc_data">1,831,373</tspan> ( <tspan class="addColor" id="loc_add">2,087,154</tspan><tspan class="addColor">++</tspan>, <tspan class="delColor" id="loc_del">255,781</tspan><tspan class="delColor">--</tspan> )
-</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200px" height="800px" viewBox="0 0 1200 800">
+<defs>
+  <!-- Gradients -->
+  <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1"/>
+    <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1"/>
+  </linearGradient>
+  
+  <linearGradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1"/>
+    <stop offset="50%" style="stop-color:#8b5cf6;stop-opacity:1"/>
+    <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1"/>
+  </linearGradient>
+  
+  <linearGradient id="cardGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" style="stop-color:#1e293b;stop-opacity:0.8"/>
+    <stop offset="100%" style="stop-color:#334155;stop-opacity:0.5"/>
+  </linearGradient>
+  
+  <!-- Filters -->
+  <filter id="glow">
+    <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+    <feMerge>
+      <feMergeNode in="coloredBlur"/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
+  
+  <filter id="shadow">
+    <feDropShadow dx="0" dy="4" stdDeviation="12" flood-opacity="0.25" flood-color="#000000"/>
+  </filter>
+  
+  <style>
+    .hero-title { fill: #ffffff; font-family: 'Inter', system-ui, sans-serif; font-size: 48px; font-weight: 900; letter-spacing: -1px; }
+    .hero-subtitle { fill: #94a3b8; font-family: 'Inter', system-ui, sans-serif; font-size: 20px; font-weight: 500; }
+    .section-title { fill: #cbd5e1; font-family: 'Inter', system-ui, sans-serif; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; }
+    .label { fill: #64748b; font-family: 'Inter', system-ui, sans-serif; font-size: 13px; font-weight: 600; }
+    .value { fill: #e2e8f0; font-family: 'Inter', system-ui, sans-serif; font-size: 14px; font-weight: 500; }
+    .stat-huge { fill: #ffffff; font-family: 'Inter', system-ui, sans-serif; font-size: 42px; font-weight: 900; }
+    .stat-big { fill: #ffffff; font-family: 'Inter', system-ui, sans-serif; font-size: 32px; font-weight: 800; }
+    .stat-label { fill: #64748b; font-family: 'Inter', system-ui, sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+    .lang-name { fill: #e2e8f0; font-family: 'Inter', system-ui, sans-serif; font-size: 15px; font-weight: 600; }
+    .lang-pct { fill: #94a3b8; font-family: 'Inter', system-ui, sans-serif; font-size: 13px; font-weight: 600; }
+  </style>
+</defs>
+
+<!-- Background -->
+<rect width="1200" height="800" fill="url(#bgGrad)"/>
+
+<!-- Animated gradient border top -->
+<rect x="0" y="0" width="1200" height="6" fill="url(#heroGrad)" opacity="0.9"/>
+
+<!-- Hero Section -->
+<g id="hero">
+  <text x="60" y="90" class="hero-title">Naly Moslih</text>
+  <text x="60" y="120" class="hero-subtitle">Full Stack Developer @ Lezzoo</text>
+  <rect x="60" y="135" width="80" height="4" fill="url(#heroGrad)" rx="2"/>
+</g>
+
+<!-- Main Grid Container -->
+<g id="main-grid">
+  
+  <!-- Left Column: Personal Info -->
+  <g id="left-column">
+    
+    <!-- Quick Stats Card -->
+    <g id="quick-stats">
+      <rect x="60" y="180" width="360" height="180" fill="url(#cardGrad1)" rx="16" filter="url(#shadow)"/>
+      <rect x="60" y="180" width="360" height="180" fill="none" stroke="url(#heroGrad)" stroke-width="2" rx="16" opacity="0.3"/>
+      
+      <text x="80" y="215" class="section-title">Quick Info</text>
+      
+      <text x="80" y="250">
+        <tspan class="label">OS:</tspan> <tspan class="value">macOS</tspan>
+      </text>
+      <text x="80" y="275">
+        <tspan class="label">Age:</tspan> <tspan class="value" id="age_data">24 years, 8 months, 15 days</tspan>
+      </text>
+      <text x="80" y="300">
+        <tspan class="label">IDE:</tspan> <tspan class="value">Windsurf</tspan>
+      </text>
+      <text x="80" y="325">
+        <tspan class="label">Languages:</tspan> <tspan class="value">Kurdish, Arabic, English</tspan>
+      </text>
+    </g>
+    
+    <!-- Tech Stack Card -->
+    <g id="tech-stack">
+      <rect x="60" y="380" width="360" height="200" fill="url(#cardGrad1)" rx="16" filter="url(#shadow)"/>
+      <rect x="60" y="380" width="360" height="200" fill="none" stroke="#8b5cf6" stroke-width="2" rx="16" opacity="0.3"/>
+      
+      <text x="80" y="415" class="section-title">Tech Stack</text>
+      
+      <text x="80" y="450">
+        <tspan class="label">Code:</tspan> <tspan class="value">JavaScript · TypeScript · Python</tspan>
+      </text>
+      <text x="80" y="478">
+        <tspan class="label">Frontend:</tspan> <tspan class="value">React · Tailwind · SCSS</tspan>
+      </text>
+      <text x="80" y="506">
+        <tspan class="label">Backend:</tspan> <tspan class="value">Node.js · Express</tspan>
+      </text>
+      <text x="80" y="534">
+        <tspan class="label">Database:</tspan> <tspan class="value">MongoDB · PostgreSQL</tspan>
+      </text>
+      <text x="80" y="562">
+        <tspan class="label">Tools:</tspan> <tspan class="value">VS Code · Figma</tspan>
+      </text>
+    </g>
+    
+    <!-- Contact Card -->
+    <g id="contact">
+      <rect x="60" y="600" width="360" height="140" fill="url(#cardGrad1)" rx="16" filter="url(#shadow)"/>
+      <rect x="60" y="600" width="360" height="140" fill="none" stroke="#10b981" stroke-width="2" rx="16" opacity="0.3"/>
+      
+      <text x="80" y="635" class="section-title">Contact</text>
+      
+      <text x="80" y="670">
+        <tspan class="label">Email:</tspan>
+      </text>
+      <text x="80" y="690" class="value">naly.software@gmail.com</text>
+      
+      <text x="80" y="715">
+        <tspan class="label">LinkedIn:</tspan> <tspan class="value">Naly Moslih</tspan>
+      </text>
+    </g>
+    
+  </g>
+  
+  <!-- Center Column: GitHub Stats -->
+  <g id="center-column">
+    
+    <!-- Iraq Rank - Featured Card -->
+    <g id="iraq-rank-featured">
+      <rect x="450" y="180" width="330" height="200" fill="url(#cardGrad1)" rx="16" filter="url(#shadow)"/>
+      <rect x="450" y="180" width="330" height="200" fill="none" stroke="#fbbf24" stroke-width="2" rx="16" opacity="0.4"/>
+      
+      <text x="615" y="215" text-anchor="middle" class="section-title" fill="#fbbf24">Iraq Developer Rank</text>
+      
+      <text x="615" y="295" text-anchor="middle" class="stat-huge" id="rank_data" fill="url(#heroGrad)" filter="url(#glow)">16</text>
+      <text x="615" y="325" text-anchor="middle" class="stat-label">National Ranking</text>
+      
+      <circle cx="570" cy="350" r="3" fill="#fbbf24" opacity="0.6"/>
+      <circle cx="615" cy="350" r="3" fill="#fbbf24" opacity="0.8"/>
+      <circle cx="660" cy="350" r="3" fill="#fbbf24" opacity="0.6"/>
+    </g>
+    
+    <!-- GitHub Stats Grid -->
+    <g id="github-stats-grid">
+      
+      <!-- Repos -->
+      <rect x="450" y="400" width="160" height="140" fill="url(#cardGrad1)" rx="12" filter="url(#shadow)"/>
+      <rect x="450" y="400" width="160" height="140" fill="none" stroke="#3b82f6" stroke-width="1.5" rx="12" opacity="0.5"/>
+      <text x="530" y="470" text-anchor="middle" class="stat-big" id="repo_data" fill="#3b82f6">53</text>
+      <text x="530" y="495" text-anchor="middle" class="stat-label">Repositories</text>
+      <text x="530" y="520" text-anchor="middle" class="label" font-size="11px">
+        <tspan fill="#64748b">+</tspan><tspan id="contrib_data" fill="#8b949e">62</tspan><tspan fill="#64748b"> contrib</tspan>
+      </text>
+      
+      <!-- Commits -->
+      <rect x="620" y="400" width="160" height="140" fill="url(#cardGrad1)" rx="12" filter="url(#shadow)"/>
+      <rect x="620" y="400" width="160" height="140" fill="none" stroke="#8b5cf6" stroke-width="1.5" rx="12" opacity="0.5"/>
+      <text x="700" y="470" text-anchor="middle" class="stat-big" id="commit_data" fill="#8b5cf6">4,343</text>
+      <text x="700" y="495" text-anchor="middle" class="stat-label">Total Commits</text>
+      
+      <!-- Followers -->
+      <rect x="450" y="560" width="160" height="140" fill="url(#cardGrad1)" rx="12" filter="url(#shadow)"/>
+      <rect x="450" y="560" width="160" height="140" fill="none" stroke="#10b981" stroke-width="1.5" rx="12" opacity="0.5"/>
+      <text x="530" y="630" text-anchor="middle" class="stat-big" id="follower_data" fill="#10b981">53</text>
+      <text x="530" y="655" text-anchor="middle" class="stat-label">Followers</text>
+      
+      <!-- Lines of Code -->
+      <rect x="620" y="560" width="160" height="140" fill="url(#cardGrad1)" rx="12" filter="url(#shadow)"/>
+      <rect x="620" y="560" width="160" height="140" fill="none" stroke="#ec4899" stroke-width="1.5" rx="12" opacity="0.5"/>
+      <text x="700" y="625" text-anchor="middle" class="stat-label">Lines of Code</text>
+      <text x="700" y="650" text-anchor="middle" class="value" font-size="18px" font-weight="700" id="loc_data" fill="#ec4899">1,831,373</text>
+      <text x="700" y="675" text-anchor="middle" class="label" font-size="10px">
+        <tspan fill="#10b981" id="loc_add">2,087,159</tspan>
+        <tspan fill="#64748b"> / </tspan>
+        <tspan fill="#f87171" id="loc_del">255,786</tspan>
+      </text>
+      
+    </g>
+    
+  </g>
+  
+  <!-- Right Column: Languages -->
+  <g id="right-column">
+    
+    <!-- Top Languages Card -->
+    <g id="top-languages">
+      <rect x="810" y="180" width="330" height="520" fill="url(#cardGrad1)" rx="16" filter="url(#shadow)"/>
+      <rect x="810" y="180" width="330" height="520" fill="none" stroke="url(#heroGrad)" stroke-width="2" rx="16" opacity="0.3"/>
+      
+      <text x="830" y="215" class="section-title">Top Languages</text>
+      
+      <!-- Language 1 -->
+      <text x="830" y="265">
+        <tspan class="lang-name" id="lang1_name">Java</tspan>
+        <tspan class="lang-pct" x="1080" id="lang1_pct">38.2%</tspan>
+      </text>
+      <rect x="830" y="275" width="280" height="10" fill="#1e293b" rx="5"/>
+      <rect x="830" y="275" width="107" height="10" fill="#f1e05a" rx="5">
+        <animate attributeName="width" from="0" to="107" dur="1s" fill="freeze"/>
+      </rect>
+      
+      <!-- Language 2 -->
+      <text x="830" y="325">
+        <tspan class="lang-name" id="lang2_name">TypeScript</tspan>
+        <tspan class="lang-pct" x="1080" id="lang2_pct">37.7%</tspan>
+      </text>
+      <rect x="830" y="335" width="280" height="10" fill="#1e293b" rx="5"/>
+      <rect x="830" y="335" width="106" height="10" fill="#3178c6" rx="5">
+        <animate attributeName="width" from="0" to="106" dur="1s" begin="0.2s" fill="freeze"/>
+      </rect>
+      
+      <!-- Language 3 -->
+      <text x="830" y="385">
+        <tspan class="lang-name" id="lang3_name">JavaScript</tspan>
+        <tspan class="lang-pct" x="1080" id="lang3_pct">12.0%</tspan>
+      </text>
+      <rect x="830" y="395" width="280" height="10" fill="#1e293b" rx="5"/>
+      <rect x="830" y="395" width="34" height="10" fill="#f1e05a" rx="5">
+        <animate attributeName="width" from="0" to="34" dur="1s" begin="0.4s" fill="freeze"/>
+      </rect>
+      
+      <!-- Language 4 -->
+      <text x="830" y="445">
+        <tspan class="lang-name" id="lang4_name">CSS</tspan>
+        <tspan class="lang-pct" x="1080" id="lang4_pct">3.0%</tspan>
+      </text>
+      <rect x="830" y="455" width="280" height="10" fill="#1e293b" rx="5"/>
+      <rect x="830" y="455" width="8" height="10" fill="#563d7c" rx="5">
+        <animate attributeName="width" from="0" to="8" dur="1s" begin="0.6s" fill="freeze"/>
+      </rect>
+      
+      <!-- Language 5 -->
+      <text x="830" y="505">
+        <tspan class="lang-name" id="lang5_name">HTML</tspan>
+        <tspan class="lang-pct" x="1080" id="lang5_pct">2.5%</tspan>
+      </text>
+      <rect x="830" y="515" width="280" height="10" fill="#1e293b" rx="5"/>
+      <rect x="830" y="515" width="7" height="10" fill="#e34c26" rx="5">
+        <animate attributeName="width" from="0" to="7" dur="1s" begin="0.8s" fill="freeze"/>
+      </rect>
+      
+      <!-- Divider -->
+      <line x1="830" y1="560" x2="1110" y2="560" stroke="#334155" stroke-width="1"/>
+      
+      <!-- Code Activity Summary -->
+      <text x="830" y="595" class="section-title" font-size="12px">Code Contribution</text>
+      
+      <g id="contribution-summary">
+        <circle cx="850" cy="625" r="6" fill="#34d399"/>
+        <text x="865" y="630" class="label" font-size="12px">
+          <tspan fill="#e2e8f0">Added: </tspan>
+          <tspan fill="#34d399" font-weight="700">2,087,159</tspan>
+        </text>
+        
+        <circle cx="850" cy="655" r="6" fill="#f87171"/>
+        <text x="865" y="660" class="label" font-size="12px">
+          <tspan fill="#e2e8f0">Removed: </tspan>
+          <tspan fill="#f87171" font-weight="700">255,786</tspan>
+        </text>
+      </g>
+    </g>
+    
+  </g>
+  
+</g>
+
+<!-- Footer Stats Bar -->
+<g id="footer-bar" opacity="0.6">
+  <rect x="60" y="760" width="1080" height="2" fill="url(#heroGrad)"/>
+  <text x="600" y="785" text-anchor="middle" class="label" font-size="11px" fill="#64748b">
+    Last updated: Daily via GitHub Actions
+  </text>
+</g>
+
 </svg>

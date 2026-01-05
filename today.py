@@ -261,7 +261,7 @@ def stars_counter(data):
 
 
 def committers_rank_getter(username, country='iraq'):
-    url = f"https://user-badge.committers.top/{country}/{username}.svg"
+    url = f"https://user-badge.committers.top/{country}_private/{username}.svg"
     response = requests.get(url, timeout=15)
     if response.status_code != 200:
         raise Exception('committers_rank_getter has failed with a', response.status_code, response.text)
@@ -294,7 +294,7 @@ def extract_rank_from_committers_svg(svg_text):
     raise ValueError('Could not extract rank from committers.top SVG')
 
 
-def svg_overwrite(filename, age_data, commit_data, rank_data, repo_data, contrib_data, follower_data, loc_data):
+def svg_overwrite(filename, age_data, commit_data, rank_data, repo_data, contrib_data, follower_data, loc_data, top_langs):
     tree = etree.parse(filename)
     root = tree.getroot()
     justify_format(root, 'age_data', age_data, 90)
@@ -306,6 +306,12 @@ def svg_overwrite(filename, age_data, commit_data, rank_data, repo_data, contrib
     justify_format(root, 'loc_data', loc_data[2], 49)
     justify_format(root, 'loc_add', loc_data[0], 0)
     justify_format(root, 'loc_del', loc_data[1], 0)
+    
+    # Update top languages
+    for i, lang in enumerate(top_langs[:5]):
+        justify_format(root, f'lang{i+1}_name', lang['name'], 0)
+        justify_format(root, f'lang{i+1}_pct', f"{lang['percentage']}%", 0)
+    
     tree.write(filename, encoding='utf-8', xml_declaration=True)
 
 
@@ -362,6 +368,61 @@ def follower_getter(username):
     return int(request.json()['data']['user']['followers']['totalCount'])
 
 
+def top_languages_getter(username):
+    query_count('follower_getter')
+    query = '''
+    query($login: String!) {
+        user(login: $login) {
+            repositories(first: 100, ownerAffiliations: OWNER, orderBy: {field: STARGAZERS, direction: DESC}) {
+                nodes {
+                    languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
+                        edges {
+                            size
+                            node {
+                                name
+                                color
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }'''
+    request = simple_request(top_languages_getter.__name__, query, {'login': username})
+    
+    # Aggregate language data
+    lang_totals = {}
+    lang_colors = {}
+    
+    for repo in request.json()['data']['user']['repositories']['nodes']:
+        for edge in repo['languages']['edges']:
+            lang_name = edge['node']['name']
+            lang_size = edge['size']
+            lang_color = edge['node']['color'] or '#858585'
+            
+            if lang_name in lang_totals:
+                lang_totals[lang_name] += lang_size
+            else:
+                lang_totals[lang_name] = lang_size
+                lang_colors[lang_name] = lang_color
+    
+    # Sort by size and get top 5
+    sorted_langs = sorted(lang_totals.items(), key=lambda x: x[1], reverse=True)[:5]
+    total_size = sum(lang_totals.values())
+    
+    # Calculate percentages
+    result = []
+    for lang, size in sorted_langs:
+        percentage = (size / total_size * 100) if total_size > 0 else 0
+        result.append({
+            'name': lang,
+            'percentage': round(percentage, 1),
+            'color': lang_colors[lang]
+        })
+    
+    return result
+
+
 def query_count(funct_id):
     global QUERY_COUNT
     QUERY_COUNT[funct_id] += 1
@@ -398,13 +459,14 @@ if __name__ == '__main__':
     contrib_data, contrib_time = perf_counter(graph_repos_stars, 'repos',
                                               ['OWNER', 'COLLABORATOR', 'ORGANIZATION_MEMBER'])
     follower_data, follower_time = perf_counter(follower_getter, USER_NAME)
+    top_langs, lang_time = perf_counter(top_languages_getter, USER_NAME)
 
     for index in range(len(total_loc) - 1): total_loc[index] = '{:,}'.format(total_loc[index])
 
     svg_overwrite('dark_mode.svg', age_data, commit_data, rank_data, repo_data, contrib_data, follower_data,
-                  total_loc[:-1])
+                  total_loc[:-1], top_langs)
     svg_overwrite('light_mode.svg', age_data, commit_data, rank_data, repo_data, contrib_data, follower_data,
-                  total_loc[:-1])
+                  total_loc[:-1], top_langs)
 
     print('\033[F\033[F\033[F\033[F\033[F\033[F\033[F\033[F',
           '{:<21}'.format('Total function time:'),
