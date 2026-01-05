@@ -35,21 +35,40 @@ def simple_request(func_name, query, variables):
 
 
 def graph_commits():
+    """Fetch all-time commits from 2020-01-01 to now and current year commits"""
     query_count('graph_commits')
-    query = '''
-    query($login: String!) {
-        user(login: $login) {
-            contributionsCollection {
-                contributionCalendar {
-                    totalContributions
+    
+    # Calculate total commits across all years from 2020 to now
+    total_commits = 0
+    current_year = datetime.datetime.now().year
+    year_commits = 0
+    
+    for year in range(2020, current_year + 1):
+        # Set date range for each year
+        from_date = f"{year}-01-01T00:00:00Z"
+        to_date = f"{year}-12-31T23:59:59Z" if year < current_year else datetime.datetime.now().isoformat() + "Z"
+        
+        query = '''
+        query($login: String!, $from: DateTime!, $to: DateTime!) {
+            user(login: $login) {
+                contributionsCollection(from: $from, to: $to) {
+                    contributionCalendar {
+                        totalContributions
+                    }
                 }
             }
-        }
-    }'''
-    variables = {'login': USER_NAME}
-    request = simple_request(graph_commits.__name__, query, variables)
-    data = request.json()['data']['user']['contributionsCollection']
-    return int(data['contributionCalendar']['totalContributions'])
+        }'''
+        variables = {'login': USER_NAME, 'from': from_date, 'to': to_date}
+        request = simple_request(graph_commits.__name__, query, variables)
+        data = request.json()['data']['user']['contributionsCollection']
+        commits = int(data['contributionCalendar']['totalContributions'])
+        total_commits += commits
+        
+        # Track current year separately
+        if year == current_year:
+            year_commits = commits
+    
+    return total_commits, year_commits
 
 
 def graph_repos_stars(count_type, owner_affiliation, cursor=None):
@@ -281,35 +300,6 @@ def committers_rank_getter(username, country='iraq'):
     return 'Unranked'
 
 
-def github_streak_getter(username):
-    """Fetch GitHub streak data from GitHub Streak Stats API using curl"""
-    import subprocess
-    import json
-    
-    url = f"https://github-readme-streak-stats.herokuapp.com/?user={username}&type=json"
-    
-    try:
-        # Use curl with longer timeout for slow Heroku dynos (they sleep when inactive)
-        result = subprocess.run(
-            ['curl', '-s', '--connect-timeout', '10', '--max-time', '60', url],
-            capture_output=True,
-            text=True,
-            timeout=65
-        )
-        
-        if result.returncode == 0 and result.stdout:
-            data = json.loads(result.stdout)
-            current = data.get('currentStreak', {}).get('length', 0)
-            longest = data.get('longestStreak', {}).get('length', 0)
-            return {
-                'current_streak': current,
-                'longest_streak': longest
-            }
-    except Exception as e:
-        pass
-    
-    # Fallback to safe defaults if API fails
-    return {'current_streak': 0, 'longest_streak': 0}
 
 
 def extract_rank_from_committers_svg(svg_text):
@@ -338,11 +328,12 @@ def extract_rank_from_committers_svg(svg_text):
     raise ValueError('Could not extract rank from committers.top SVG')
 
 
-def svg_overwrite(filename, age_data, commit_data, rank_data, repo_data, contrib_data, follower_data, loc_data, top_langs, streak_data):
+def svg_overwrite(filename, age_data, commit_data, year_commits, rank_data, repo_data, contrib_data, follower_data, loc_data, top_langs):
     tree = etree.parse(filename)
     root = tree.getroot()
     justify_format(root, 'age_data', age_data, 90)
     justify_format(root, 'commit_data', commit_data, 39)
+    justify_format(root, 'year_commits', year_commits, 0)
     justify_format(root, 'rank_data', rank_data, 21)
     justify_format(root, 'repo_data', repo_data, 24)
     justify_format(root, 'contrib_data', contrib_data, 0)
@@ -350,10 +341,6 @@ def svg_overwrite(filename, age_data, commit_data, rank_data, repo_data, contrib
     justify_format(root, 'loc_data', loc_data[2], 49)
     justify_format(root, 'loc_add', loc_data[0], 0)
     justify_format(root, 'loc_del', loc_data[1], 0)
-    
-    # Update streak data
-    justify_format(root, 'current_streak', streak_data['current_streak'], 0)
-    justify_format(root, 'longest_streak', streak_data['longest_streak'], 0)
     
     # Update top languages
     for i, lang in enumerate(top_langs[:5]):
@@ -501,21 +488,21 @@ if __name__ == '__main__':
     total_loc, loc_time = perf_counter(loc_query, ['OWNER', 'COLLABORATOR', 'ORGANIZATION_MEMBER'], 7)
     formatter('LOC (cached)', loc_time) if total_loc[-1] else formatter('LOC (no cache)', loc_time)
 
-    commit_data, commit_time = perf_counter(graph_commits)
+    commit_result, commit_time = perf_counter(graph_commits)
+    commit_data, year_commits = commit_result
     rank_data, rank_time = perf_counter(committers_rank_getter, USER_NAME)
     repo_data, repo_time = perf_counter(graph_repos_stars, 'repos', ['OWNER'])
     contrib_data, contrib_time = perf_counter(graph_repos_stars, 'repos',
                                               ['OWNER', 'COLLABORATOR', 'ORGANIZATION_MEMBER'])
     follower_data, follower_time = perf_counter(follower_getter, USER_NAME)
     top_langs, lang_time = perf_counter(top_languages_getter, USER_NAME)
-    streak_data, streak_time = perf_counter(github_streak_getter, USER_NAME)
 
     for index in range(len(total_loc) - 1): total_loc[index] = '{:,}'.format(total_loc[index])
 
-    svg_overwrite('dark_mode.svg', age_data, commit_data, rank_data, repo_data, contrib_data, follower_data,
-                  total_loc[:-1], top_langs, streak_data)
-    svg_overwrite('light_mode.svg', age_data, commit_data, rank_data, repo_data, contrib_data, follower_data,
-                  total_loc[:-1], top_langs, streak_data)
+    svg_overwrite('dark_mode.svg', age_data, commit_data, year_commits, rank_data, repo_data, contrib_data, follower_data,
+                  total_loc[:-1], top_langs)
+    svg_overwrite('light_mode.svg', age_data, commit_data, year_commits, rank_data, repo_data, contrib_data, follower_data,
+                  total_loc[:-1], top_langs)
 
     print('\033[F\033[F\033[F\033[F\033[F\033[F\033[F\033[F',
           '{:<21}'.format('Total function time:'),
