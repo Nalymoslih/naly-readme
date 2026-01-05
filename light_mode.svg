@@ -130,7 +130,7 @@
       
       <text x="615" y="215" text-anchor="middle" class="section-title" fill="#f59e0b">Iraq Developer Rank</text>
       
-      <text x="615" y="295" text-anchor="middle" class="stat-huge" id="rank_data" fill="url(#heroGrad)">16</text>
+      <text x="615" y="295" text-anchor="middle" class="stat-huge" id="rank_data" fill="url(#heroGrad)">Unranked</text>
       <text x="615" y="325" text-anchor="middle" class="stat-label">National Ranking</text>
       
       <circle cx="570" cy="350" r="3" fill="#f59e0b" opacity="0.6"/>
@@ -153,7 +153,7 @@
       <!-- Commits -->
       <rect x="620" y="400" width="160" height="140" fill="url(#cardGrad1)" rx="12" filter="url(#shadow)"/>
       <rect x="620" y="400" width="160" height="140" fill="none" stroke="#8b5cf6" stroke-width="1.5" rx="12" opacity="0.4"/>
-      <text x="700" y="470" text-anchor="middle" class="stat-big" id="commit_data" fill="#8b5cf6">4,346</text>
+      <text x="700" y="470" text-anchor="middle" class="stat-big" id="commit_data" fill="#8b5cf6">4,348</text>
       <text x="700" y="495" text-anchor="middle" class="stat-label">Total Commits</text>
       
       <!-- Followers -->
@@ -166,11 +166,11 @@
       <rect x="620" y="560" width="160" height="140" fill="url(#cardGrad1)" rx="12" filter="url(#shadow)"/>
       <rect x="620" y="560" width="160" height="140" fill="none" stroke="#ec4899" stroke-width="1.5" rx="12" opacity="0.4"/>
       <text x="700" y="625" text-anchor="middle" class="stat-label">Lines of Code</text>
-      <text x="700" y="650" text-anchor="middle" class="value" font-size="18px" font-weight="700" id="loc_data" fill="#ec4899">1,831,905</text>
+      <text x="700" y="650" text-anchor="middle" class="value" font-size="18px" font-weight="700" id="loc_data" fill="#ec4899">1,831,918</text>
       <text x="700" y="675" text-anchor="middle" class="label" font-size="10px">
-        <tspan fill="#10b981" id="loc_add">2,087,788</tspan>
+        <tspan fill="#10b981" id="loc_add">2,087,816</tspan>
         <tspan fill="#64748b"> / </tspan>
-        <tspan fill="#f87171" id="loc_del">255,883</tspan>
+        <tspan fill="#f87171" id="loc_del">255,898</tspan>
       </text>
       
     </g>
