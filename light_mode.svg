@@ -17,26 +17,32 @@ text, tspan {white-space: pre;}
 </style>
 <rect width="985px" height="500px" fill="#f6f8fa" rx="15"/>
 <text x="15" y="30" fill="#24292f">
-<tspan x="15" y="30">shko@maghdid</tspan> -——————————————————————————————————————————————————————————————————————————————————-—-
-<tspan x="15" y="50" class="cc">. </tspan><tspan class="key">OS</tspan>:<tspan class="cc"> ................................................................. </tspan><tspan class="value">macOS(main), Windows, Linux</tspan>
-<tspan x="15" y="70" class="cc">. </tspan><tspan class="key">Uptime</tspan>:<tspan class="cc" id="age_data_dots"> ............................................................ </tspan><tspan class="value" id="age_data">22 years, 11 months, 22 days</tspan>
+<tspan x="15" y="30">naly@moslih</tspan> -——————————————————————————————————————————————————————————————————————————————————-—-
+<tspan x="15" y="50" class="cc">. </tspan><tspan class="key">OS</tspan>:<tspan class="cc"> ................................................................. </tspan><tspan class="value">macOS</tspan>
+<tspan x="15" y="70" class="cc">. </tspan><tspan class="key">Uptime</tspan>:<tspan class="cc" id="age_data_dots"> ............................................................. </tspan><tspan class="value" id="age_data">24 years, 8 months, 15 days</tspan>
 <tspan x="15" y="90" class="cc">. </tspan><tspan class="key">Host</tspan>:<tspan class="cc"> .................................................................................... </tspan><tspan class="value">Lezzoo</tspan>
-<tspan x="15" y="110" class="cc">. </tspan><tspan class="key">Kernel</tspan>:<tspan class="cc"> ...................................................................... </tspan><tspan class="value">Fullstack Engineer</tspan>
-<tspan x="15" y="130" class="cc">. </tspan><tspan class="key">IDE</tspan>:<tspan class="cc"> ................................................................................... </tspan><tspan class="value">WebStorm</tspan>
+<tspan x="15" y="110" class="cc">. </tspan><tspan class="key">Kernel</tspan>:<tspan class="cc"> ...................................................................... </tspan><tspan class="value">Full Stack Developer</tspan>
+<tspan x="15" y="130" class="cc">. </tspan><tspan class="key">IDE</tspan>:<tspan class="cc"> ................................................................................... </tspan><tspan class="value">Windsurf</tspan>
 <tspan x="15" y="150" class="cc">. </tspan>
-<tspan x="15" y="170" class="cc">. </tspan><tspan class="key">Languages</tspan>.<tspan class="key">Programming</tspan>:<tspan class="cc"> ..................................... </tspan><tspan class="value">JavaScript, TypeScript, Java, Python</tspan>
-<tspan x="15" y="190" class="cc">. </tspan><tspan class="key">Languages</tspan>.<tspan class="key">Stack</tspan>:<tspan class="cc"> ................................... </tspan><tspan class="value">React, React Native, Electron, NodeJS, MySQL</tspan>
+<tspan x="15" y="170" class="cc">. </tspan><tspan class="key">Languages</tspan>.<tspan class="key">Programming</tspan>:<tspan class="cc"> ..................................... </tspan><tspan class="value">JavaScript, TypeScript, Python</tspan>
+<tspan x="15" y="190" class="cc">. </tspan><tspan class="key">Languages</tspan>.<tspan class="key">Stack</tspan>:<tspan class="cc"> ................................... </tspan><tspan class="value">React, Node.js, Express, MongoDB, PostgreSQL</tspan>
 <tspan x="15" y="210" class="cc">. </tspan><tspan class="key">Languages</tspan>.<tspan class="key">Styling</tspan>:<tspan class="cc"> .......................................................... </tspan><tspan class="value">CSS, Tailwind, SCSS</tspan>
 <tspan x="15" y="230" class="cc">. </tspan>
 <tspan x="15" y="250" class="cc">. </tspan><tspan class="key">Languages</tspan>.<tspan class="key">Real</tspan>:<tspan class="cc"> ........................................................ </tspan><tspan class="value">Kurdish, Arabic, English</tspan>
-<tspan x="15" y="270" class="cc">. </tspan><tspan class="key">Hobbies</tspan>.<tspan class="key">Software</tspan>:<tspan class="cc"> ...................................................... </tspan><tspan class="value">Adobe Illustrator, Figma</tspan>
-<tspan x="15" y="290" class="cc">. </tspan><tspan class="key">Hobbies</tspan>.<tspan class="key">Main</tspan>:<tspan class="cc"> ............................................................. </tspan><tspan class="value">Android Customization</tspan>
+<tspan x="15" y="270" class="cc">. </tspan><tspan class="key">Hobbies</tspan>.<tspan class="key">Software</tspan>:<tspan class="cc"> ...................................................... </tspan><tspan class="value">VS Code, Figma</tspan>
+<tspan x="15" y="290" class="cc">. </tspan><tspan class="key">Hobbies</tspan>.<tspan class="key">Main</tspan>:<tspan class="cc"> ............................................................. </tspan><tspan class="value">Open Source, Mobile Developer</tspan>
 <tspan x="15" y="330">- Contact</tspan> -—————————————————————————————————————————————————————————————————————————————————————-—-
-<tspan x="15" y="350" class="cc">. </tspan><tspan class="key">Email</tspan>:<tspan class="cc"> ................................................................... </tspan><tspan class="value">Shkoma.ranya@gmail.com</tspan>
-<tspan x="15" y="370" class="cc">. </tspan><tspan class="key">LinkedIn</tspan>:<tspan class="cc"> .......................................................................... </tspan><tspan class="value">Shko Maghdid</tspan>
+<tspan x="15" y="350" class="cc">. </tspan><tspan class="key">Email</tspan>:<tspan class="cc"> ................................................................... </tspan><tspan class="value">naly.software@gmail.com</tspan>
+<tspan x="15" y="370" class="cc">. </tspan><tspan class="key">LinkedIn</tspan>:<tspan class="cc"> .......................................................................... </tspan><tspan class="value">Naly Moslih</tspan>
 <tspan x="15" y="410">- GitHub Stats</tspan> -————————————————————————————————————————————————————————————————————————————————-—-
+<<<<<<< Updated upstream
 <tspan x="15" y="430" class="cc">. </tspan><tspan class="key">Repos</tspan>:<tspan class="cc" id="repo_data_dots"> .................... </tspan><tspan class="value" id="repo_data">53</tspan> {<tspan class="key">Contributed</tspan>: <tspan class="value" id="contrib_data">62</tspan>} | <tspan class="key">Github Contributors Rank</tspan>:<tspan class="cc" id="rank_data_dots"> ........... </tspan><tspan class="value" id="rank_data">Unranked</tspan>
 <tspan x="15" y="450" class="cc">. </tspan><tspan class="key">Commmits</tspan>:<tspan class="cc" id="commit_data_dots"> ................................ </tspan><tspan class="value" id="commit_data">4,333</tspan> | <tspan class="key">Followers</tspan>:<tspan class="cc" id="follower_data_dots"> ................................ </tspan><tspan class="value" id="follower_data">53</tspan>
 <tspan x="15" y="470" class="cc">. </tspan><tspan class="key">Lines of Code on GitHub</tspan>:<tspan class="cc" id="loc_data_dots"> ...................................... </tspan><tspan class="value" id="loc_data">1,831,305</tspan> ( <tspan class="addColor" id="loc_add">2,087,017</tspan><tspan class="addColor">++</tspan>, <tspan class="delColor" id="loc_del">255,712</tspan><tspan class="delColor">--</tspan> )
+=======
+<tspan x="15" y="430" class="cc">. </tspan><tspan class="key">Repos</tspan>:<tspan class="cc" id="repo_data_dots"> .................... </tspan><tspan class="value" id="repo_data">53</tspan> {<tspan class="key">Contributed</tspan>: <tspan class="value" id="contrib_data">62</tspan>}
+<tspan x="15" y="450" class="cc">. </tspan><tspan class="key">Commmits</tspan>:<tspan class="cc" id="commit_data_dots"> ................................ </tspan><tspan class="value" id="commit_data">4,334</tspan> | <tspan class="key">Followers</tspan>:<tspan class="cc" id="follower_data_dots"> ................................ </tspan><tspan class="value" id="follower_data">53</tspan>
+<tspan x="15" y="470" class="cc">. </tspan><tspan class="key">Lines of Code on GitHub</tspan>:<tspan class="cc" id="loc_data_dots"> ...................................... </tspan><tspan class="value" id="loc_data">1,831,374</tspan> ( <tspan class="addColor" id="loc_add">2,087,090</tspan><tspan class="addColor">++</tspan>, <tspan class="delColor" id="loc_del">255,716</tspan><tspan class="delColor">--</tspan> )
+>>>>>>> Stashed changes
 </text>
 </svg>
