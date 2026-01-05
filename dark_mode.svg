@@ -100,14 +100,14 @@
       <text x="80" y="475" class="section-title">Coding Streak</text>
       
       <g id="current-streak">
-        <text x="180" y="530" text-anchor="middle" class="stat-big" id="current_streak" fill="#f59e0b">15</text>
+        <text x="180" y="530" text-anchor="middle" class="stat-big" id="current_streak" fill="#f59e0b">0</text>
         <text x="180" y="555" text-anchor="middle" class="stat-label">Current Streak</text>
       </g>
       
       <line x1="330" y1="500" x2="330" y2="560" stroke="#334155" stroke-width="1"/>
       
       <g id="longest-streak">
-        <text x="450" y="530" text-anchor="middle" class="stat-big" id="longest_streak" fill="#3b82f6">15</text>
+        <text x="450" y="530" text-anchor="middle" class="stat-big" id="longest_streak" fill="#3b82f6">0</text>
         <text x="450" y="555" text-anchor="middle" class="stat-label">Longest Streak</text>
       </g>
     </g>
@@ -126,7 +126,7 @@
       </g>
       
       <g id="stat-commits">
-        <text x="270" y="690" text-anchor="middle" class="stat-big" id="commit_data" fill="#8b5cf6">4,349</text>
+        <text x="270" y="690" text-anchor="middle" class="stat-big" id="commit_data" fill="#8b5cf6">4,350</text>
         <text x="270" y="715" text-anchor="middle" class="stat-label">Commits</text>
       </g>
       
@@ -153,7 +153,7 @@
       
       <text x="890" y="220" text-anchor="middle" class="section-title" fill="#fbbf24">Iraq Developer Rank</text>
       
-      <text x="890" y="310" text-anchor="middle" class="stat-huge" id="rank_data" fill="url(#heroGrad)" filter="url(#glow)">16</text>
+      <text x="890" y="310" text-anchor="middle" class="stat-huge" id="rank_data" fill="url(#heroGrad)" filter="url(#glow)">Unranked</text>
       <text x="890" y="345" text-anchor="middle" class="stat-label">National Ranking</text>
       
       <circle cx="845" cy="385" r="3" fill="#fbbf24" opacity="0.6"/>
@@ -168,15 +168,15 @@
       
       <text x="660" y="475" class="section-title">Lines of Code</text>
       
-      <text x="890" y="525" text-anchor="middle" class="value" font-size="28px" font-weight="700" id="loc_data" fill="#ec4899">1,831,918</text>
+      <text x="890" y="525" text-anchor="middle" class="value" font-size="28px" font-weight="700" id="loc_data" fill="#ec4899">1,831,825</text>
       
       <text x="720" y="555" class="label" font-size="11px">
         <tspan fill="#10b981">●</tspan> <tspan fill="#8b949e">Added: </tspan>
-        <tspan fill="#34d399" font-weight="600" id="loc_add">2,087,827</tspan>
+        <tspan fill="#34d399" font-weight="600" id="loc_add">2,088,072</tspan>
       </text>
       <text x="960" y="555" class="label" font-size="11px">
         <tspan fill="#f87171">●</tspan> <tspan fill="#8b949e">Removed: </tspan>
-        <tspan fill="#f87171" font-weight="600" id="loc_del">255,909</tspan>
+        <tspan fill="#f87171" font-weight="600" id="loc_del">256,247</tspan>
       </text>
     </g>
     
