@@ -282,18 +282,33 @@ def committers_rank_getter(username, country='iraq'):
 
 
 def github_streak_getter(username):
-    """Fetch GitHub streak data from GitHub Streak Stats API"""
+    """Fetch GitHub streak data from GitHub Streak Stats API using curl"""
+    import subprocess
+    import json
+    
+    url = f"https://github-readme-streak-stats.herokuapp.com/?user={username}&type=json"
+    
     try:
-        url = f"https://github-readme-streak-stats.herokuapp.com/?user={username}&type=json"
-        response = requests.get(url, timeout=15)
-        if response.status_code == 200:
-            data = response.json()
+        # Use curl with longer timeout for slow Heroku dynos (they sleep when inactive)
+        result = subprocess.run(
+            ['curl', '-s', '--connect-timeout', '10', '--max-time', '60', url],
+            capture_output=True,
+            text=True,
+            timeout=65
+        )
+        
+        if result.returncode == 0 and result.stdout:
+            data = json.loads(result.stdout)
+            current = data.get('currentStreak', {}).get('length', 0)
+            longest = data.get('longestStreak', {}).get('length', 0)
             return {
-                'current_streak': data.get('currentStreak', {}).get('length', 0),
-                'longest_streak': data.get('longestStreak', {}).get('length', 0)
+                'current_streak': current,
+                'longest_streak': longest
             }
-    except:
+    except Exception as e:
         pass
+    
+    # Fallback to safe defaults if API fails
     return {'current_streak': 0, 'longest_streak': 0}
 
 
