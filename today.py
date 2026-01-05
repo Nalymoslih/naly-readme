@@ -261,11 +261,24 @@ def stars_counter(data):
 
 
 def committers_rank_getter(username, country='iraq'):
-    url = f"https://user-badge.committers.top/{country}_private/{username}.svg"
-    response = requests.get(url, timeout=15)
-    if response.status_code != 200:
-        raise Exception('committers_rank_getter has failed with a', response.status_code, response.text)
-    return extract_rank_from_committers_svg(response.text)
+    # Try multiple endpoints to get a valid rank
+    endpoints = [
+        f"https://user-badge.committers.top/{country}/{username}.svg",
+        f"https://user-badge.committers.top/{country}_private/{username}.svg",
+        f"https://user-badge.committers.top/worldwide/{username}.svg"
+    ]
+    
+    for url in endpoints:
+        try:
+            response = requests.get(url, timeout=15)
+            if response.status_code == 200:
+                rank = extract_rank_from_committers_svg(response.text)
+                if rank != 'Unranked':
+                    return rank
+        except:
+            continue
+    
+    return 'Unranked'
 
 
 def extract_rank_from_committers_svg(svg_text):

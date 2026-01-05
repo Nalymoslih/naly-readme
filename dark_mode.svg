@@ -138,7 +138,7 @@
       
       <text x="615" y="215" text-anchor="middle" class="section-title" fill="#fbbf24">Iraq Developer Rank</text>
       
-      <text x="615" y="295" text-anchor="middle" class="stat-huge" id="rank_data" fill="url(#heroGrad)" filter="url(#glow)">Unranked</text>
+      <text x="615" y="295" text-anchor="middle" class="stat-huge" id="rank_data" fill="url(#heroGrad)" filter="url(#glow)">16</text>
       <text x="615" y="325" text-anchor="middle" class="stat-label">National Ranking</text>
       
       <circle cx="570" cy="350" r="3" fill="#fbbf24" opacity="0.6"/>
