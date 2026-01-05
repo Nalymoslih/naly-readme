@@ -1,7 +1,8 @@
-<a href="https://github.com/OneAboveAll1964/OneAboveAll1964">
+<a href="https://github.com/NalyMoslih/naly-readme">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/OneAboveAll1964/OneAboveAll1964/main/dark_mode.svg">
-    <img alt="OneAboveAll1964's GitHub Profile README" src="https://raw.githubusercontent.com/OneAboveAll1964/OneAboveAll1964/main/light_mode.svg">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/NalyMoslih/naly-readme
+/main/dark_mode.svg">
+    <img alt="NalyMoslih's GitHub Profile README" src="https://raw.githubusercontent.com/NalyMoslih/naly-readme/main/light_mode.svg">
   </picture>
 </a>
 # naly-readme
