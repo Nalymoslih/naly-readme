@@ -65,7 +65,7 @@
       
       <!-- Left side: Quick Info -->
       <text x="80" y="260" class="label">Age</text>
-      <text x="80" y="285" class="value" id="age_data">24 years, 8 months, 15 days</text>
+      <text x="80" y="285" class="value" id="age_data">24 years, 8 months, 16 days</text>
       
       <text x="80" y="320" class="label">IDE</text>
       <text x="80" y="345" class="value">Vs Code</text>
@@ -98,7 +98,7 @@
       </g>
       
       <g id="stat-commits">
-        <text x="270" y="530" text-anchor="middle" class="stat-big" id="commit_data" fill="#8b5cf6">8,711</text>
+        <text x="270" y="530" text-anchor="middle" class="stat-big" id="commit_data" fill="#8b5cf6">8,750</text>
         <text x="270" y="555" text-anchor="middle" class="stat-label">Commits</text>
       </g>
       
@@ -120,7 +120,7 @@
       
       <text x="80" y="635" class="section-title">2026 Activity</text>
       
-      <text x="330" y="690" text-anchor="middle" class="stat-huge" id="year_commits" fill="#10b981" font-size="42px">81</text>
+      <text x="330" y="690" text-anchor="middle" class="stat-huge" id="year_commits" fill="#10b981" font-size="42px">120</text>
       <text x="330" y="720" text-anchor="middle" class="stat-label">Contributions This Year</text>
     </g>
     
@@ -155,11 +155,11 @@
       
       <text x="720" y="555" class="label" font-size="11px">
         <tspan fill="#10b981">●</tspan> <tspan fill="#64748b">Added: </tspan>
-        <tspan fill="#10b981" font-weight="600" id="loc_add">2,088,291</tspan>
+        <tspan fill="#10b981" font-weight="600" id="loc_add">2,088,300</tspan>
       </text>
       <text x="960" y="555" class="label" font-size="11px">
         <tspan fill="#ef4444">●</tspan> <tspan fill="#64748b">Removed: </tspan>
-        <tspan fill="#ef4444" font-weight="600" id="loc_del">256,502</tspan>
+        <tspan fill="#ef4444" font-weight="600" id="loc_del">256,511</tspan>
       </text>
     </g>
     
