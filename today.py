@@ -71,6 +71,83 @@ def graph_commits():
     return total_commits, year_commits
 
 
+def get_streak_stats():
+    """Fetch contribution streak statistics from all years (2020 to present)"""
+    query_count('graph_commits')
+    
+    current_year = datetime.datetime.now().year
+    all_days = []
+    
+    # Fetch contribution data from 2020 to present
+    for year in range(2020, current_year + 1):
+        from_date = f"{year}-01-01T00:00:00Z"
+        to_date = f"{year}-12-31T23:59:59Z" if year < current_year else datetime.datetime.now().isoformat() + "Z"
+        
+        query = '''
+        query($login: String!, $from: DateTime!, $to: DateTime!) {
+            user(login: $login) {
+                contributionsCollection(from: $from, to: $to) {
+                    contributionCalendar {
+                        weeks {
+                            contributionDays {
+                                contributionCount
+                                date
+                            }
+                        }
+                    }
+                }
+            }
+        }'''
+        variables = {'login': USER_NAME, 'from': from_date, 'to': to_date}
+        request = simple_request(get_streak_stats.__name__, query, variables)
+        
+        weeks = request.json()['data']['user']['contributionsCollection']['contributionCalendar']['weeks']
+        
+        # Flatten days from weeks
+        for week in weeks:
+            all_days.extend(week['contributionDays'])
+    
+    # Sort days by date to ensure proper order
+    all_days.sort(key=lambda x: x['date'])
+    
+    # Calculate streaks
+    current_streak = 0
+    longest_streak = 0
+    temp_streak = 0
+    
+    # Reverse to check from today backwards for current streak
+    today = datetime.datetime.now().date()
+    
+    # Check current streak (must include today or yesterday)
+    for day in reversed(all_days):
+        day_date = datetime.datetime.fromisoformat(day['date'].replace('Z', '+00:00')).date()
+        if day_date > today:
+            continue
+            
+        if day['contributionCount'] > 0:
+            current_streak += 1
+        else:
+            # If we haven't started counting yet (checking today/yesterday)
+            days_diff = (today - day_date).days
+            if days_diff <= 1:
+                continue
+            else:
+                break
+    
+    # Calculate longest streak across all years
+    for day in all_days:
+        if day['contributionCount'] > 0:
+            temp_streak += 1
+            longest_streak = max(longest_streak, temp_streak)
+        else:
+            temp_streak = 0
+    
+    return {
+        'current_streak': current_streak,
+        'longest_streak': longest_streak
+    }
+
+
 def graph_repos_stars(count_type, owner_affiliation, cursor=None):
     query_count('graph_repos_stars')
     query = '''
@@ -328,7 +405,7 @@ def extract_rank_from_committers_svg(svg_text):
     raise ValueError('Could not extract rank from committers.top SVG')
 
 
-def svg_overwrite(filename, age_data, commit_data, year_commits, rank_data, repo_data, contrib_data, follower_data, loc_data, top_langs):
+def svg_overwrite(filename, age_data, commit_data, year_commits, rank_data, repo_data, contrib_data, follower_data, loc_data, top_langs, streak_stats):
     tree = etree.parse(filename)
     root = tree.getroot()
     justify_format(root, 'age_data', age_data, 90)
@@ -341,6 +418,10 @@ def svg_overwrite(filename, age_data, commit_data, year_commits, rank_data, repo
     justify_format(root, 'loc_data', loc_data[2], 49)
     justify_format(root, 'loc_add', loc_data[0], 0)
     justify_format(root, 'loc_del', loc_data[1], 0)
+    
+    # Update streak stats
+    justify_format(root, 'current_streak', streak_stats['current_streak'], 0)
+    justify_format(root, 'longest_streak', streak_stats['longest_streak'], 0)
     
     # Update top languages
     for i, lang in enumerate(top_langs[:5]):
@@ -496,13 +577,14 @@ if __name__ == '__main__':
                                               ['OWNER', 'COLLABORATOR', 'ORGANIZATION_MEMBER'])
     follower_data, follower_time = perf_counter(follower_getter, USER_NAME)
     top_langs, lang_time = perf_counter(top_languages_getter, USER_NAME)
+    streak_stats, streak_time = perf_counter(get_streak_stats)
 
     for index in range(len(total_loc) - 1): total_loc[index] = '{:,}'.format(total_loc[index])
 
     svg_overwrite('dark_mode.svg', age_data, commit_data, year_commits, rank_data, repo_data, contrib_data, follower_data,
-                  total_loc[:-1], top_langs)
+                  total_loc[:-1], top_langs, streak_stats)
     svg_overwrite('light_mode.svg', age_data, commit_data, year_commits, rank_data, repo_data, contrib_data, follower_data,
-                  total_loc[:-1], top_langs)
+                  total_loc[:-1], top_langs, streak_stats)
 
     print('\033[F\033[F\033[F\033[F\033[F\033[F\033[F\033[F',
           '{:<21}'.format('Total function time:'),
