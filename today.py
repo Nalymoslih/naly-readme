@@ -356,7 +356,7 @@ def stars_counter(data):
     return total_stars
 
 
-def committers_rank_getter(username, country='iraq'):
+def committers_rank_getter(username, country='kurdistan'):
     # Try multiple endpoints to get a valid rank
     endpoints = [
         f"https://user-badge.committers.top/{country}_private/{username}.svg",
