@@ -73,7 +73,7 @@
       
       <!-- Left side: Quick Info -->
       <text x="80" y="260" class="label">Age</text>
-      <text x="80" y="285" class="value" id="age_data">25 years, 4 months, 7 days</text>
+      <text x="80" y="285" class="value" id="age_data">25 years, 4 months, 8 days</text>
       
       <text x="80" y="320" class="label">IDE</text>
       <text x="80" y="345" class="value">Vs Code</text>
@@ -106,7 +106,7 @@
       </g>
       
       <g id="stat-commits">
-        <text x="270" y="530" text-anchor="middle" class="stat-big" id="commit_data" fill="#8b5cf6">11,801</text>
+        <text x="270" y="530" text-anchor="middle" class="stat-big" id="commit_data" fill="#8b5cf6">11,802</text>
         <text x="270" y="555" text-anchor="middle" class="stat-label">Commits</text>
       </g>
       
@@ -132,13 +132,13 @@
       <g id="year-stats-grid">
         <!-- 2026 Contributions -->
         <g id="stat-year-contrib">
-          <text x="150" y="685" text-anchor="middle" class="stat-big" id="year_commits" fill="#10b981" font-size="32px">3,098</text>
+          <text x="150" y="685" text-anchor="middle" class="stat-big" id="year_commits" fill="#10b981" font-size="32px">3,099</text>
           <text x="150" y="710" text-anchor="middle" class="stat-label" font-size="10px">2026 Contributions</text>
         </g>
         
         <!-- Current Streak -->
         <g id="stat-current-streak">
-          <text x="330" y="685" text-anchor="middle" class="stat-big" id="current_streak" fill="#f59e0b" font-size="32px">21</text>
+          <text x="330" y="685" text-anchor="middle" class="stat-big" id="current_streak" fill="#f59e0b" font-size="32px">22</text>
           <text x="330" y="710" text-anchor="middle" class="stat-label" font-size="10px">Current Streak</text>
           <text x="330" y="725" text-anchor="middle" class="label" font-size="9px" fill="#64748b">🔥 days</text>
         </g>
@@ -183,11 +183,11 @@
       
       <text x="720" y="555" class="label" font-size="11px">
         <tspan fill="#10b981">●</tspan> <tspan fill="#8b949e">Added: </tspan>
-        <tspan fill="#34d399" font-weight="600" id="loc_add">2,891,940</tspan>
+        <tspan fill="#34d399" font-weight="600" id="loc_add">2,891,955</tspan>
       </text>
       <text x="960" y="555" class="label" font-size="11px">
         <tspan fill="#f87171">●</tspan> <tspan fill="#8b949e">Removed: </tspan>
-        <tspan fill="#f87171" font-weight="600" id="loc_del">320,996</tspan>
+        <tspan fill="#f87171" font-weight="600" id="loc_del">321,011</tspan>
       </text>
     </g>
     
